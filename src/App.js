@@ -12,19 +12,25 @@ class App extends Component {
     this.state = {
       score: 0,
       isRequest: true,
+      winner: 1,
+      playerPick: 0,
     }
 
-    // this.onInputChanged = this.onInputChanged.bind(this);
+  }
+
+  mainLogic = (pick) => {
+    console.log(pick);
+    this.setState({ isRequest: false, playerPick: pick })
   }
 
   render() {
-    const { score } = this.state;
+    const { score, winner, playerPick } = this.state;
     const isRequest = this.state.isRequest;
     let main;
     if (isRequest) { 
-      main = <Request />;
+      main = <Request mainLogic={this.mainLogic} />;
     } else {
-      main = <Response />;
+      main = <Response winner={winner} playerPick={playerPick} />;
     }
 
     return (

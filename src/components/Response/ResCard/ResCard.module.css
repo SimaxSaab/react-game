@@ -1,0 +1,24 @@
+.card {
+  height: 10vmin;
+  width: 10vmin;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card__img {
+  height: 7vmin;
+  width: 7vmin;
+}
+
+.win {
+  background-color: green;
+}
+
+.draw {
+  background-color: #61dafb;
+}
+
+.lose {
+  background-color: red;
+}

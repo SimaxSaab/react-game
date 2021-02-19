@@ -29,11 +29,11 @@ export default class Card extends Component {
   }
 
   render() {
-    const {cardLogo} = this.props;
-    const {hasClass} = this.state;
+    const {cardLogo, number} = this.props;
+    const {hasClass} = this.state; 
 
     return (
-      <div className={hasClass ? `${t.card} ${t.card_anim}` : `${t.card}`} onClick={this.clickAnim}>
+      <div className={hasClass ? `${t.card} ${t.card_anim}` : `${t.card}`} onClick={this.clickAnim,() => this.props.mainLogic(number)}>
         <img src={cardLogo} className={`${t.card__img}`} alt="Card logo" />
       </div>
     );
