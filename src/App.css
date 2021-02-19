@@ -4,7 +4,7 @@
 }
 
 .App {
-  background-color: #282c34;
+  background-color: #606060;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -21,6 +21,7 @@
 
 .main {
   height: 60vh;
+  position: relative;
 }
 
 .footer {

@@ -11,7 +11,7 @@ class App extends Component {
 
     this.state = {
       score: 0,
-      isRequest: false,
+      isRequest: true,
     }
 
     // this.onInputChanged = this.onInputChanged.bind(this);
