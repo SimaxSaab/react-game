@@ -22,6 +22,15 @@
 .main {
   height: 60vh;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.horizontal {
+  display: flex;
+  justify-content: space-between;
+  width: 60vmin;
 }
 
 .footer {

@@ -8,7 +8,7 @@ export default class Scoreboard extends Component {
 
   render() {
     const {winner, playerPick} = this.props;
-    console.log(winner);
+    // console.log(winner);
     let winnerCaption;
     if (winner) { 
       winnerCaption = 'You win!';
@@ -18,8 +18,12 @@ export default class Scoreboard extends Component {
 
     return (
       <main className="main">
-        <h1  className={`${t.res__heading}`}>{winnerCaption}</h1>
-        <ResCard winner={winner} pick={playerPick} />
+        <h1>{winnerCaption}</h1>
+        <div className="horizontal">
+          <ResCard winner={winner} pick={playerPick} cardAffiliation={false} />
+          <ResCard winner={winner} pick={playerPick} cardAffiliation={true} />
+        </div>
+        <button className={`${t.res__button}`} onClick={() => this.props.reset()}>Play again</button>
       </main>
     );
   }

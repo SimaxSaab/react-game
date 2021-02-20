@@ -12,15 +12,19 @@ class App extends Component {
     this.state = {
       score: 0,
       isRequest: true,
-      winner: 1,
+      winner: 0,
       playerPick: 0,
     }
 
   }
 
   mainLogic = (pick) => {
-    console.log(pick);
+    // console.log(pick);
     this.setState({ isRequest: false, playerPick: pick })
+  }
+  
+  reset = () => {
+    this.setState({ isRequest: true, })
   }
 
   render() {
@@ -30,7 +34,7 @@ class App extends Component {
     if (isRequest) { 
       main = <Request mainLogic={this.mainLogic} />;
     } else {
-      main = <Response winner={winner} playerPick={playerPick} />;
+      main = <Response winner={winner} playerPick={playerPick} reset={this.reset} />;
     }
 
     return (

@@ -9,11 +9,23 @@ export default class Card extends Component {
 
   render() {
     let card = [cardRock, cardScissors, cardPaper], classPick;
-    const {pick, winner} = this.props;
+    const {pick, winner, cardAffiliation} = this.props;
+    console.log(cardAffiliation);
     switch(winner) {
-      case 0: classPick = t.card + ' ' + t.draw; break;
-      case 1: classPick = t.card + ' ' + t.win; break;
-      case -1: classPick = t.card + ' ' + t.lose;
+      case 0: 
+            classPick = t.card + ' ' + t.draw;
+            break;
+      case 1:
+            classPick = t.card + ' ' + t.win;
+            if(cardAffiliation) {
+              classPick = t.card + ' ' + t.lose;
+            }
+            break;
+      case -1:
+              classPick = t.card + ' ' + t.lose;
+              if(cardAffiliation) {
+                classPick = t.card + ' ' + t.win;
+              }
     }
 
     return (
