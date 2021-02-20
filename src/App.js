@@ -14,13 +14,29 @@ class App extends Component {
       isRequest: true,
       winner: 0,
       playerPick: 0,
+      computerPick: 0,
     }
 
   }
 
   mainLogic = (pick) => {
-    // console.log(pick);
-    this.setState({ isRequest: false, playerPick: pick })
+    let computerPick = Math.floor(Math.random() * 3), winner, score = this.state.score;
+    if((pick == 0 && computerPick == 1) || (pick == 1 && computerPick == 2) || (pick == 2 && computerPick == 0)) {
+      winner = 1;
+    } else if((pick == 0 && computerPick == 0) || (pick == 1 && computerPick == 1) || (pick == 2 && computerPick == 2)) {
+      winner = 0;
+    } else { winner = -1; }
+    score = score + winner;
+
+    setTimeout(
+      () => {this.setState({
+        isRequest: false,
+        playerPick: pick,
+        computerPick: computerPick,
+        winner: winner,
+        score: score
+      })},
+    4000)
   }
   
   reset = () => {
@@ -28,13 +44,13 @@ class App extends Component {
   }
 
   render() {
-    const { score, winner, playerPick } = this.state;
+    const { score, winner, playerPick, computerPick } = this.state;
     const isRequest = this.state.isRequest;
     let main;
     if (isRequest) { 
       main = <Request mainLogic={this.mainLogic} />;
     } else {
-      main = <Response winner={winner} playerPick={playerPick} reset={this.reset} />;
+      main = <Response winner={winner} playerPick={playerPick} computerPick={computerPick} reset={this.reset} />;
     }
 
     return (

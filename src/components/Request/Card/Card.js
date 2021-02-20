@@ -12,7 +12,6 @@ export default class Card extends Component {
 
   clickAnim(event){
     const target = event.currentTarget;
-    console.log(target);
     target.style.backgroundColor = 'green';
     target.style.width = '38vmin';
     target.style.height = '38vmin';
@@ -33,7 +32,7 @@ export default class Card extends Component {
     const {hasClass} = this.state; 
 
     return (
-      <div className={hasClass ? `${t.card} ${t.card_anim}` : `${t.card}`} onClick={this.clickAnim,() => this.props.mainLogic(number)}>
+      <div className={hasClass ? `${t.card} ${t.card_anim}` : `${t.card}`} onClick={ (e) => {this.clickAnim(e); this.props.mainLogic(number)}}>
         <img src={cardLogo} className={`${t.card__img}`} alt="Card logo" />
       </div>
     );

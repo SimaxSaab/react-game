@@ -10,7 +10,6 @@ export default class Card extends Component {
   render() {
     let card = [cardRock, cardScissors, cardPaper], classPick;
     const {pick, winner, cardAffiliation} = this.props;
-    console.log(cardAffiliation);
     switch(winner) {
       case 0: 
             classPick = t.card + ' ' + t.draw;
