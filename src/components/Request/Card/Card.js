@@ -20,7 +20,7 @@ export default class Card extends Component {
     target.style.transform = 'translateX(-50%)';
     target.style.left = '50%';
     target.style.zIndex = 5;
-    target.style.marginTop = '-1vmin';
+    // target.style.marginTop = '-1vmin';
     target.style.borderRadius = '50%';
     this.setState({
       hasClass: false

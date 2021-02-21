@@ -12,10 +12,6 @@
   z-index: 1;
 }
 
-.card:first-child {
-  margin-top: 0;
-}
-
 @media (prefers-reduced-motion: no-preference) {
   .card_anim:hover {
     animation: logo-anim infinite 20s linear;

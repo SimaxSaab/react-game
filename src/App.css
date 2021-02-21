@@ -3,28 +3,45 @@
   padding: 0;
 }
 
-.App {
+html {
+  box-sizing: border-box;
   background-color: #606060;
+}
+
+*, *::after, *::before {
+  box-sizing: inherit;
+}
+
+.App {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  /* align-items: center; */
   justify-content: left;
   font-size: calc(10px + 2vmin);
   color: white;
+  max-width: 640px;
+  margin: 0 auto;
 }
 
 .App-header {
   height: 30vh;
-  max-width: 1280px;
+  border: 1vmin solid black;
+  border-radius: 3vmin;
+  margin: 1vh 1vmin;
+  padding: 1vmin;
 }
 
 .main {
-  height: 60vh;
+  height: 54vh;
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
+  border: 1vmin solid black;
+  border-radius: 3vmin;
+  margin: 1vh 1vmin;
+  padding: 1vmin;
 }
 
 .horizontal {
@@ -38,6 +55,10 @@
   display: flex;
   flex-wrap: wrap;
   height: 10vh;
+  border: 1vmin solid black;
+  border-radius: 3vmin;
+  margin: 1vh 1vmin;
+  padding: 1vmin;
 }
 
 .App-link {
@@ -45,5 +66,5 @@
 }
 
 .App-logo {
-  height: 8vmin;
+  height: 7vmin;
 }
