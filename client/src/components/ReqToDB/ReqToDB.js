@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-// import ResCard from './ResCard/ResCard';
+import RecPlayer from './RecPlayer/RecPlayer';
 
-
-// import t from './Response.module.css';
+// import t from './RecPlayer.module.css';
 
 export default class Scoreboard extends Component {
 
@@ -10,33 +9,34 @@ export default class Scoreboard extends Component {
     super();
 
     this.state = {
+      rec: false,
       items: []
     }
-
   }
 
-
-  request = () => {
-    fetch("/select")
-      .then(res => res.json())
-      .then(
-        (result) => {console.log(result);
-          this.setState({
-            items: result
-          });
-        }
-      )
-      console.log(this.state.items);
+  rec = () => {
+    this.setState({
+      rec: !this.state.rec
+    })
   }
 
   render() {
-    const {items} = this.state;
-    // console.log(winner);
+    const {items, score, addToList, writeToServer} = this.props;
+    const {rec} = this.state;
+    let showResult;
+    if(rec) {
+      showResult =  <RecPlayer score={score} addToList={addToList} />;
+    }
 
     return (
       <main className="main">
         <h1>List</h1>
-        <button onClick={this.request}>Request</button>
+        <div className="row">
+          <button onClick={this.rec}>Record achievement</button>
+          <button onClick={writeToServer}>Write to server</button>
+        </div>
+        {showResult}
+
         {
           items.map((item, idx) => (
             <li key={items.length - idx}>

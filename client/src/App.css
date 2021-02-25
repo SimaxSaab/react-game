@@ -45,6 +45,10 @@ html {
   padding: 1vmin;
 }
 
+.row {
+  display: flex;
+}
+
 .horizontal {
   display: flex;
   justify-content: space-between;

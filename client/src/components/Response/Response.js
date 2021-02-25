@@ -8,7 +8,6 @@ export default class Scoreboard extends Component {
 
   render() {
     const {winner, playerPick, computerPick} = this.props;
-    // console.log(winner);
     let winnerCaption;
     if (winner == 1) { 
       winnerCaption = 'You win!';

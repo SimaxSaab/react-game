@@ -10,14 +10,13 @@ export default function Scoreboard(props) {
   } else {
     caption = 'Work with score';
   }
-  // render() {
-    return (
-      <header className="App-header">
-        <button onClick={ (e) => {props.showRes(); setCaption(!isCaption)}}>{caption}</button>
-        <button onClick={ (e) => {props.showPopup(); }}>RULES</button>
-        <h1 className={`${t.sb__heading}`}>Rock Paper Scissors</h1>
-        <h3>Score: {props.score}</h3>
-      </header>
-    );
-  // }
+
+  return (
+    <header className="App-header">
+      <button onClick={ (e) => {props.showRes(); setCaption(!isCaption)}}>{caption}</button>
+      <button onClick={ (e) => {props.showPopup(); }}>RULES</button>
+      <h1 className={`${t.sb__heading}`}>Rock Paper Scissors</h1>
+      <h3>Score: {props.score}</h3>
+    </header>
+  );
 }

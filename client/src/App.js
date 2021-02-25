@@ -18,14 +18,50 @@ class App extends Component {
       winner: 0,
       playerPick: 0,
       computerPick: 0,
+      items: []
     }
-
   }
 
   showRes = () => {
+    fetch("/select")
+      .then(res => res.json())
+      .then(
+        (result) => {
+          this.setState({
+            items: result
+          });
+        }
+      );
     this.setState({
       isWorkWithDB: !this.state.isWorkWithDB
-    })
+    });
+  }
+
+  addToList = (player) => {
+    const data = { name: player, score: this.state.score };
+    this.setState({
+      items: [...this.state.items, data]
+    });
+  }
+
+  writeToServer = () => {
+    const data = this.state.items;
+    try {
+      async function f() {        
+        const response = await fetch("/post", {
+          method: 'POST', // или 'PUT'
+          body: JSON.stringify(data), // данные могут быть 'строкой' или {объектом}!
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        });
+      // const json = await response.json();
+      // console.log('Успех:', JSON.stringify(json));
+      }
+      f();
+    } catch (error) {
+      console.error('Ошибка записи на сервер:', error);
+    }
   }
 
   showPopup = () => {
@@ -65,11 +101,10 @@ class App extends Component {
   }
 
   render() {
-    const { score, winner, playerPick, computerPick, isRequest, isWorkWithDB, hasClassPopup } = this.state;
-    // const isRequest = this.state.isRequest;
+    const { score, winner, playerPick, computerPick, isRequest, isWorkWithDB, hasClassPopup, items } = this.state;
     let main;
     if (isWorkWithDB) {
-      main = <ReqToDB />;
+      main = <ReqToDB score={score} items={items} addToList={this.addToList} writeToServer={this.writeToServer} />;
     } else {
       if (isRequest) { 
         main = <Request mainLogic={this.mainLogic} />;
