@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Scoreboard from './components/Scoreboard/Scoreboard';
 import Request from './components/Request/Request';
 import Response from './components/Response/Response';
+import ReqToDB from './components/ReqToDB/ReqToDB';
 import logo from './img/rs_school_js.svg';
 import './App.css';
 
@@ -11,12 +12,19 @@ class App extends Component {
 
     this.state = {
       score: 0,
+      isWorkWithDB: false,
       isRequest: true,
       winner: 0,
       playerPick: 0,
       computerPick: 0,
     }
 
+  }
+
+  showRes = () => {
+    this.setState({
+      isWorkWithDB: !this.state.isWorkWithDB
+    })
   }
 
   mainLogic = (pick) => {
@@ -44,18 +52,22 @@ class App extends Component {
   }
 
   render() {
-    const { score, winner, playerPick, computerPick } = this.state;
-    const isRequest = this.state.isRequest;
+    const { score, winner, playerPick, computerPick, isRequest, isWorkWithDB } = this.state;
+    // const isRequest = this.state.isRequest;
     let main;
-    if (isRequest) { 
-      main = <Request mainLogic={this.mainLogic} />;
+    if (isWorkWithDB) {
+      main = <ReqToDB />;
     } else {
-      main = <Response winner={winner} playerPick={playerPick} computerPick={computerPick} reset={this.reset} />;
+      if (isRequest) { 
+        main = <Request mainLogic={this.mainLogic} />;
+      } else {
+        main = <Response winner={winner} playerPick={playerPick} computerPick={computerPick} reset={this.reset} />;
+      }
     }
 
     return (
       <div className="App">
-        <Scoreboard score={score} />
+        <Scoreboard score={score} showRes={this.showRes} />
         { main }
         <footer className="footer">
           <a
