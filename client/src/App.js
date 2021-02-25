@@ -13,6 +13,7 @@ class App extends Component {
     this.state = {
       score: 0,
       isWorkWithDB: false,
+      hasClassPopup: false,
       isRequest: true,
       winner: 0,
       playerPick: 0,
@@ -24,6 +25,18 @@ class App extends Component {
   showRes = () => {
     this.setState({
       isWorkWithDB: !this.state.isWorkWithDB
+    })
+  }
+
+  showPopup = () => {
+    this.setState({
+      hasClassPopup: true
+    })
+  }
+  
+  hidePopup = () => {
+    this.setState({
+      hasClassPopup: false
     })
   }
 
@@ -52,7 +65,7 @@ class App extends Component {
   }
 
   render() {
-    const { score, winner, playerPick, computerPick, isRequest, isWorkWithDB } = this.state;
+    const { score, winner, playerPick, computerPick, isRequest, isWorkWithDB, hasClassPopup } = this.state;
     // const isRequest = this.state.isRequest;
     let main;
     if (isWorkWithDB) {
@@ -67,7 +80,7 @@ class App extends Component {
 
     return (
       <div className="App">
-        <Scoreboard score={score} showRes={this.showRes} />
+        <Scoreboard score={score} showRes={this.showRes} showPopup={this.showPopup} />
         { main }
         <footer className="footer">
           <a
@@ -88,6 +101,13 @@ class App extends Component {
             <img src={logo} className="App-logo" alt="logo" />
           </a>
         </footer>
+        <div className={hasClassPopup ? `modal modal_show` : `modal`}>
+          <div className={hasClassPopup ? `popup popup_show` : `popup`} onClick={ (e) => {this.hidePopup(); }}>
+            <p>1. Stone beats scissors</p>
+            <p>2. Scissors beats paper</p>
+            <p>3. Paper beats stone</p>
+          </div>
+        </div>
       </div>
     );
   }
