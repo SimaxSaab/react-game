@@ -1,3 +1,17 @@
 .sb__heading {
   text-align: center;
 }
+
+.sb__buttons {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.sb__sound {
+  display: block;
+  margin-top: 0.5vmin;
+}
+
+.hide {
+  display: none;
+}

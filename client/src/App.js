@@ -11,6 +11,7 @@ class App extends Component {
     super();
 
     this.state = {
+      isSound: true,
       score: 0,
       isWorkWithDB: false,
       hasClassPopup: false,
@@ -20,6 +21,14 @@ class App extends Component {
       computerPick: 0,
       items: []
     }
+  }
+
+  volumeOnOff = (sound) => {
+    console.log(this.state.isSound);
+    this.setState({
+      isSound: sound
+    });
+    console.log(this.state.isSound);
   }
 
   showRes = () => {
@@ -76,7 +85,8 @@ class App extends Component {
     })
   }
 
-  mainLogic = (pick) => {
+  mainLogic = (pick, s) => {
+    console.log(s);
     let computerPick = Math.floor(Math.random() * 3), winner, score = this.state.score;
     if((pick == 0 && computerPick == 1) || (pick == 1 && computerPick == 2) || (pick == 2 && computerPick == 0)) {
       winner = 1;
@@ -101,13 +111,13 @@ class App extends Component {
   }
 
   render() {
-    const { score, winner, playerPick, computerPick, isRequest, isWorkWithDB, hasClassPopup, items } = this.state;
+    const { score, winner, playerPick, computerPick, isRequest, isWorkWithDB, hasClassPopup, items, isSound } = this.state;
     let main;
     if (isWorkWithDB) {
       main = <ReqToDB score={score} items={items} addToList={this.addToList} writeToServer={this.writeToServer} />;
     } else {
       if (isRequest) { 
-        main = <Request mainLogic={this.mainLogic} />;
+        main = <Request mainLogic={this.mainLogic} isSound={isSound} />;
       } else {
         main = <Response winner={winner} playerPick={playerPick} computerPick={computerPick} reset={this.reset} />;
       }
@@ -115,7 +125,7 @@ class App extends Component {
 
     return (
       <div className="App">
-        <Scoreboard score={score} showRes={this.showRes} showPopup={this.showPopup} />
+        <Scoreboard score={score} showRes={this.showRes} showPopup={this.showPopup} turnIsSound={this.volumeOnOff} />
         { main }
         <footer className="footer">
           <a
