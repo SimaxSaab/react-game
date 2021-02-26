@@ -7,8 +7,8 @@ import cardPaper from '../../img/paper.svg';
 import t from './Request.module.css';
 
 export default class Request extends Component {
-  shouldComponentUpdate(nextProps) {
-    return this.props.isSound !== nextProps.isSound;
+  constructor(props) {
+    super(props);
   }
 
   render() {

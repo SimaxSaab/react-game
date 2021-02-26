@@ -41,9 +41,11 @@ class App extends Component {
           });
         }
       );
+      console.log(this.state.isWorkWithDB);
     this.setState({
       isWorkWithDB: !this.state.isWorkWithDB
     });
+    console.log(this.state.isWorkWithDB);
   }
 
   addToList = (player) => {
@@ -85,8 +87,7 @@ class App extends Component {
     })
   }
 
-  mainLogic = (pick, s) => {
-    console.log(s);
+  mainLogic = (pick) => {
     let computerPick = Math.floor(Math.random() * 3), winner, score = this.state.score;
     if((pick == 0 && computerPick == 1) || (pick == 1 && computerPick == 2) || (pick == 2 && computerPick == 0)) {
       winner = 1;
