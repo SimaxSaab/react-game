@@ -58,18 +58,16 @@ class App extends Component {
   writeToServer = () => {
     const data = this.state.items;
     try {
-      async function f() {        
+      async function tryWriteToServer() {        
         const response = await fetch("/post", {
-          method: 'POST', // или 'PUT'
-          body: JSON.stringify(data), // данные могут быть 'строкой' или {объектом}!
+          method: 'POST', 
+          body: JSON.stringify(data),
           headers: {
             'Content-Type': 'application/json'
           }
         });
-      // const json = await response.json();
-      // console.log('Успех:', JSON.stringify(json));
       }
-      f();
+      tryWriteToServer();
     } catch (error) {
       console.error('Ошибка записи на сервер:', error);
     }

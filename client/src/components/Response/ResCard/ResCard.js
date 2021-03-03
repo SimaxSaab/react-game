@@ -3,7 +3,7 @@ import cardRock from '../../../img/rock.svg';
 import cardScissors from '../../../img/scissors.svg';
 import cardPaper from '../../../img/paper.svg';
 
-import t from './ResCard.module.css';
+import style from './ResCard.module.css';
 
 export default class Card extends Component {
 
@@ -12,24 +12,24 @@ export default class Card extends Component {
     const {pick, winner, cardAffiliation} = this.props;
     switch(winner) {
       case 0: 
-            classPick = t.card + ' ' + t.draw;
+            classPick = style.card + ' ' + style.draw;
             break;
       case 1:
-            classPick = t.card + ' ' + t.win;
+            classPick = style.card + ' ' + style.win;
             if(cardAffiliation) {
-              classPick = t.card + ' ' + t.lose;
+              classPick = style.card + ' ' + style.lose;
             }
             break;
       case -1:
-              classPick = t.card + ' ' + t.lose;
+              classPick = style.card + ' ' + style.lose;
               if(cardAffiliation) {
-                classPick = t.card + ' ' + t.win;
+                classPick = style.card + ' ' + style.win;
               }
     }
 
     return (
       <div className={classPick}>
-        <img src={card[pick]} className={`${t.card__img}`} alt="Card logo" />
+        <img src={card[pick]} className={`${style.card__img}`} alt="Card logo" />
       </div>
     );
   }

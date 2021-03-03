@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ReactHowler from 'react-howler';
 import boom from './bump.mp3';
 
-import t from './Card.module.css';
+import style from './Card.module.css';
 
 export default class Card extends Component {
 
@@ -52,8 +52,8 @@ export default class Card extends Component {
             src={[boom]}
             playing={this.state.playing}
           />
-        <div className={hasClass ? `${t.card} ${t.card_anim}` : `${t.card}`} onMouseOver={this.playSound} onClick={ (e) => {this.clickAnim(e); this.props.mainLogic(number)}}>
-          <img src={cardLogo} className={`${t.card__img}`} alt="Card logo" />
+        <div className={hasClass ? `${style.card} ${style.card_anim}` : `${style.card}`} onMouseOver={this.playSound} onClick={ (e) => {this.clickAnim(e); this.props.mainLogic(number)}}>
+          <img src={cardLogo} className={`${style.card__img}`} alt="Card logo" />
         </div>
       </>
     );

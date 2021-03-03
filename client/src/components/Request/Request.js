@@ -4,7 +4,7 @@ import cardRock from '../../img/rock.svg';
 import cardScissors from '../../img/scissors.svg';
 import cardPaper from '../../img/paper.svg';
 
-import t from './Request.module.css';
+import style from './Request.module.css';
 
 export default class Request extends Component {
   constructor(props) {
@@ -14,9 +14,9 @@ export default class Request extends Component {
   render() {
     return (
       <main className="main">
-        <Card  className={`${t.req__heading}`} cardLogo={cardRock} mainLogic={this.props.mainLogic} number="0" isSound={this.props.isSound} />
-        <Card  className={`${t.req__heading}`} cardLogo={cardScissors} mainLogic={this.props.mainLogic} number="1" isSound={this.props.isSound} />
-        <Card  className={`${t.req__heading}`} cardLogo={cardPaper} mainLogic={this.props.mainLogic} number="2" isSound={this.props.isSound} />
+        <Card  className={`${style.req__heading}`} cardLogo={cardRock} mainLogic={this.props.mainLogic} number="0" isSound={this.props.isSound} />
+        <Card  className={`${style.req__heading}`} cardLogo={cardScissors} mainLogic={this.props.mainLogic} number="1" isSound={this.props.isSound} />
+        <Card  className={`${style.req__heading}`} cardLogo={cardPaper} mainLogic={this.props.mainLogic} number="2" isSound={this.props.isSound} />
       </main>
     );
   }

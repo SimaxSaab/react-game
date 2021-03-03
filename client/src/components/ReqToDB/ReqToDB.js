@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import RecPlayer from './RecPlayer/RecPlayer';
 
-// import t from './RecPlayer.module.css';
-
 export default class Scoreboard extends Component {
 
   constructor() {

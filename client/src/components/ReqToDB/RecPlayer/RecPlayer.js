@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import t from './RecPlayer.module.css';
+import style from './RecPlayer.module.css';
 
 export default class RecPlayer extends Component {
 
@@ -17,10 +17,10 @@ export default class RecPlayer extends Component {
   }
 
   changePlayer = ev => {
-    let v = ev.target.value;
-    let valid = this.validateName(v);
+    let targetValue = ev.target.value;
+    let valid = this.validateName(targetValue);
     this.setState({
-      player: v,
+      player: targetValue,
       nameValid: valid
     })
   }
@@ -32,11 +32,11 @@ export default class RecPlayer extends Component {
       <>
         <label>
           Player:
-        <input className={`${t.input}`} type="text" onChange={this.changePlayer} value={this.state.player} style={{borderColor:nameColor}} />
+        <input className={`${style.input}`} type="text" onChange={this.changePlayer} value={this.state.player} style={{borderColor: nameColor}} />
         </label>
         <label>
           Score:
-          <input className={`${t.input}`} type="text" placeholder={this.props.score} />
+          <input className={`${style.input}`} type="text" placeholder={this.props.score} />
         </label>
         <button onClick={ () => { this.props.addToList(this.state.player)}} disabled={!this.state.nameValid}>
           Add to list
