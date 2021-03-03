@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReactHowler from 'react-howler';
 import boom from './bump.mp3';
+import click from './click.mp3';
 
 import style from './Card.module.css';
 
@@ -10,7 +11,8 @@ export default class Card extends Component {
     super(props);
     this.state = {
       hasClass: true,
-      playing: false,
+      playingHover: false,
+      playingClick: false,
       playingAnim: true
     };
     this.clickAnim = this.clickAnim.bind(this);
@@ -34,10 +36,18 @@ export default class Card extends Component {
     })
   }
 
-  playSound = () => {
+  playHover = () => {
     if(this.props.isSound && this.state.playingAnim) {
       this.setState({
-        playing: true
+        playingHover: true
+      });
+    }
+  }
+
+  playClick = () => {
+    if(this.props.isSound && this.state.playingAnim) {
+      this.setState({
+        playingClick: true
       });
     }
   }
@@ -50,9 +60,14 @@ export default class Card extends Component {
       <>
         <ReactHowler
             src={[boom]}
-            playing={this.state.playing}
+            playing={this.state.playingHover}
           />
-        <div className={hasClass ? `${style.card} ${style.card_anim}` : `${style.card}`} onMouseOver={this.playSound} onClick={ (e) => {this.clickAnim(e); this.props.mainLogic(number)}}>
+        <ReactHowler
+            src={[click]}
+            playing={this.state.playingClick}
+          />
+        <div className={hasClass ? `${style.card} ${style.card_anim}` : `${style.card}`} onMouseOver={this.playHover} onClick={ (e) => {this.clickAnim(e); this.props.mainLogic(number); this.playClick();}
+        }>
           <img src={cardLogo} className={`${style.card__img}`} alt="Card logo" />
         </div>
       </>

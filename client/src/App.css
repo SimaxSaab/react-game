@@ -45,8 +45,32 @@ html {
   padding: 1vmin;
 }
 
-.row {
+.res__work {
+  height: 42vh;
+}
+
+.res__row {
   display: flex;
+}
+
+.res__player {
+  top: 1vh;
+  position: relative;
+}
+.res__score {
+  top: 2vh;
+  position: relative;
+}
+.res__add {
+  top: 3vh;
+  position: relative;
+}
+
+.res__list {
+  height: 13vh;
+  overflow-y: auto;
+  position: relative;
+  top: 4vh;
 }
 
 .horizontal {

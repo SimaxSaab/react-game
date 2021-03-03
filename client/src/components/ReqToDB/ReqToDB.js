@@ -29,18 +29,21 @@ export default class Scoreboard extends Component {
     return (
       <main className="main">
         <h1>List</h1>
-        <div className="row">
-          <button onClick={this.rec}>Record achievement</button>
-          <button onClick={writeToServer}>Write to server</button>
+        <div className="res__work">
+          <div className="res__row">
+            <button onClick={this.rec}>Record achievement</button>
+            <button onClick={writeToServer}>Write to server</button>
+          </div>
+          {showResult}
+          <div className="res__list">
+            {
+              items.map((item, idx) => (
+                <li key={items.length - idx}>
+                  {item.name} - {item.score}
+                </li>
+              ))}
+          </div>
         </div>
-        {showResult}
-
-        {
-          items.map((item, idx) => (
-            <li key={items.length - idx}>
-              {item.name} - {item.score}
-            </li>
-          ))}
       </main>
     );
   }

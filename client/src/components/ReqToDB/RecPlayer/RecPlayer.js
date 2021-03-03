@@ -30,15 +30,15 @@ export default class RecPlayer extends Component {
 
     return (
       <>
-        <label>
+        <label className="res__player">
           Player:
         <input className={`${style.input}`} type="text" onChange={this.changePlayer} value={this.state.player} style={{borderColor: nameColor}} />
         </label>
-        <label>
+        <label className="res__score">
           Score:
           <input className={`${style.input}`} type="text" placeholder={this.props.score} />
         </label>
-        <button onClick={ () => { this.props.addToList(this.state.player)}} disabled={!this.state.nameValid}>
+        <button className="res__add" onClick={ () => { this.props.addToList(this.state.player)}} disabled={!this.state.nameValid}>
           Add to list
         </button>
       </>
