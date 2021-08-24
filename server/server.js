@@ -21,6 +21,14 @@ app.post('/post', function(req, res) {
   console.log('Записано');
 });
 
-app.listen(3030, function () {
-  console.log('Server app listening on 3030!');
-});
+// app.listen(3030, function () {
+//   console.log('Server app listening on 3030!');
+// });
+
+app.listen(
+  process.env.PORT,
+  process.env.IP,
+  function(){
+      console.log('HelloWorld server is started!');
+  }
+);
