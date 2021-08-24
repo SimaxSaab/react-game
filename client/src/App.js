@@ -32,7 +32,7 @@ class App extends Component {
   }
 
   showRes = () => {
-    fetch("/select")
+    fetch("http://maxius.alwaysdata.net/select")
       .then(res => res.json())
       .then(
         (result) => {
@@ -59,7 +59,7 @@ class App extends Component {
     const data = this.state.items;
     try {
       async function tryWriteToServer() {        
-        const response = await fetch("/post", {
+        const response = await fetch("http://maxius.alwaysdata.net/post", {
           method: 'POST', 
           body: JSON.stringify(data),
           headers: {

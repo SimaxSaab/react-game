@@ -45,12 +45,22 @@ html {
   padding: 1vmin;
 }
 
+button:hover {
+  cursor: pointer;
+}
+
 .res__work {
   height: 42vh;
+  width: min-content;
+
 }
 
 .res__row {
   display: flex;
+}
+
+.res__nowrap {
+  white-space: nowrap;
 }
 
 .res__player {

@@ -1,6 +1,11 @@
+const cors = require('cors');
+
 const express = require('express');
 const app = express();
 const fs = require('fs');
+
+app.use(cors());
+app.options('*', cors());
 
 app.use(express.json());
 

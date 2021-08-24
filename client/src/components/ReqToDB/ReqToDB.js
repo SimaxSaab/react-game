@@ -31,8 +31,8 @@ export default class Scoreboard extends Component {
         <h1>List</h1>
         <div className="res__work">
           <div className="res__row">
-            <button onClick={this.rec}>Record achievement</button>
-            <button onClick={writeToServer}>Write to server</button>
+            <button onClick={this.rec} className="res__nowrap">Record achievement</button>
+            <button onClick={writeToServer} className="res__nowrap">Write to server</button>
           </div>
           {showResult}
           <div className="res__list">
